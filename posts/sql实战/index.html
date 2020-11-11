@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="萧萧弈寒" />
+	
+	
+	
+	<title>SQL实战 ｜ 萧萧弈寒</title>
+	
+    
+    
+    <meta name="description" content="本文基于停留的风-SQL实战中的建表脚本和问题，使用MySQL语法实现。 一、建表语句 DROP TABLE IF EXISTS student; CREATE TABLE student( sid VARCHAR(20) PRIMARY KEY COMMENT &amp;#39;学号&amp;#39;, sname VARCHAR(20)" />
+    
+
+    
+    
+    <meta name="keywords" content="萧萧弈寒" />
+    
+
+	
+    
+    <link rel="shortcut icon" href="http://example.org/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/zozo.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://example.org/css/highlight.css" />
+
+    
+    
+</head>
+
+<body>
+    <div class="main animate__animated animate__fadeInDown">
+        <div class="nav_container animated fadeInDown">
+    <div class="site_nav" id="site_nav">
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/posts/">Archive</a>
+            </li>
+            
+            <li>
+                <a href="/tags/">Tags</a>
+            </li>
+            
+            <li>
+                <a href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="menu_icon">
+        <a id="menu_icon"><i class="ri-menu-line"></i></a>
+    </div>
+</div>
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <h1>
+                <a href="http://example.org/">
+                    <span>萧萧弈寒</span>
+                </a>
+            </h1>
+        </div>
+        <div class="description">
+            <p class="sub_title"></p>
+            <div class="my_socials">
+                
+                
+                <a href="https://github.com/xxyh" title="github" target="_blank"><i class="ri-github-fill"></i></a>
+                
+                
+                <a href="http://example.org/index.xml" type="application/rss+xml" title="rss" target="_blank"><i
+                        class="ri-rss-fill"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="content">
+            <div class="post_page">
+                <div class="post animate__animated animate__fadeInDown">
+                    <div class="post_title post_detail_title">
+                        <h2><a href='/posts/sql%E5%AE%9E%E6%88%98/'>SQL实战</a></h2>
+                        <span class="date">2020.11.11</span>
+                    </div>
+                    <div class="post_content markdown"><p>本文基于<a href="#https://www.cnblogs.com/yank/p/3673450.html">停留的风-SQL实战</a>中的建表脚本和问题，使用MySQL语法实现。</p>
+<h1 id="一建表语句">一、建表语句</h1>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">student</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nf">student</span><span class="p">(</span>
+<span class="n">sid</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">COMMENT</span> <span class="s1">&#39;学号&#39;</span><span class="p">,</span>
+<span class="n">sname</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">COMMENT</span> <span class="s1">&#39;姓名&#39;</span><span class="p">,</span>
+<span class="n">sage</span> <span class="kt">INT</span> <span class="n">COMMENT</span> <span class="s1">&#39;年龄&#39;</span><span class="p">,</span>
+<span class="n">ssex</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">COMMENT</span> <span class="s1">&#39;性别&#39;</span>
+<span class="p">)</span><span class="kp">ENGINE</span><span class="o">=</span><span class="n">INNODB</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">teacher</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nf">teacher</span><span class="p">(</span>
+<span class="n">tid</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">COMMENT</span> <span class="s1">&#39;教师ID&#39;</span><span class="p">,</span>
+<span class="n">tname</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">COMMENT</span> <span class="s1">&#39;教师姓名&#39;</span>
+<span class="p">)</span><span class="kp">ENGINE</span><span class="o">=</span><span class="n">INNODB</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">course</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nf">course</span><span class="p">(</span>
+<span class="n">cid</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">COMMENT</span> <span class="s1">&#39;课程ID&#39;</span><span class="p">,</span>
+<span class="n">cname</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="n">COMMENT</span> <span class="s1">&#39;课程名&#39;</span><span class="p">,</span>
+<span class="n">tid</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">COMMENT</span> <span class="s1">&#39;任教教师ID&#39;</span>
+<span class="p">)</span><span class="kp">ENGINE</span><span class="o">=</span><span class="n">INNODB</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+
+<span class="k">DROP</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">EXISTS</span> <span class="n">SC</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span> <span class="nf">sc</span><span class="p">(</span>
+<span class="n">sid</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">COMMENT</span> <span class="s1">&#39;学生ID&#39;</span><span class="p">,</span>
+<span class="n">cid</span> <span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="n">COMMENT</span> <span class="s1">&#39;课程ID&#39;</span><span class="p">,</span>
+<span class="n">score</span> <span class="kt">INT</span> <span class="n">COMMENT</span> <span class="s1">&#39;分数&#39;</span>
+<span class="p">)</span><span class="kp">ENGINE</span><span class="o">=</span><span class="n">INNODB</span> <span class="kp">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></div><h1 id="二初始化数据">二、初始化数据</h1>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">Student</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S002&#39;</span><span class="p">,</span><span class="s1">&#39;Lucy&#39;</span><span class="p">,</span><span class="s1">&#39;21&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S003&#39;</span><span class="p">,</span><span class="s1">&#39;Jim&#39;</span><span class="p">,</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S004&#39;</span><span class="p">,</span><span class="s1">&#39;Brush&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S005&#39;</span><span class="p">,</span><span class="s1">&#39;Kim&#39;</span><span class="p">,</span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S006&#39;</span><span class="p">,</span><span class="s1">&#39;Fka&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S007&#39;</span><span class="p">,</span><span class="s1">&#39;Cidy&#39;</span><span class="p">,</span><span class="s1">&#39;17&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Student</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">SName</span><span class="p">,</span><span class="n">SAge</span><span class="p">,</span><span class="n">SSex</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S008&#39;</span><span class="p">,</span><span class="s1">&#39;YouNi&#39;</span><span class="p">,</span><span class="s1">&#39;19&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">);</span>
+
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">Teacher</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Teacher</span><span class="p">(</span><span class="n">TID</span><span class="p">,</span><span class="n">TName</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;T001&#39;</span><span class="p">,</span><span class="s1">&#39;张三&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Teacher</span><span class="p">(</span><span class="n">TID</span><span class="p">,</span><span class="n">TName</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;T002&#39;</span><span class="p">,</span><span class="s1">&#39;李四&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Teacher</span><span class="p">(</span><span class="n">TID</span><span class="p">,</span><span class="n">TName</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;T003&#39;</span><span class="p">,</span><span class="s1">&#39;王五&#39;</span><span class="p">);</span>
+
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">Course</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Course</span><span class="p">(</span><span class="n">CID</span><span class="p">,</span><span class="n">CName</span><span class="p">,</span><span class="n">TID</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span><span class="s1">&#39;英语&#39;</span><span class="p">,</span><span class="s1">&#39;T001&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Course</span><span class="p">(</span><span class="n">CID</span><span class="p">,</span><span class="n">CName</span><span class="p">,</span><span class="n">TID</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;C02&#39;</span><span class="p">,</span><span class="s1">&#39;体育&#39;</span><span class="p">,</span><span class="s1">&#39;T002&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">Course</span><span class="p">(</span><span class="n">CID</span><span class="p">,</span><span class="n">CName</span><span class="p">,</span><span class="n">TID</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;C03&#39;</span><span class="p">,</span><span class="s1">&#39;数学&#39;</span><span class="p">,</span><span class="s1">&#39;T003&#39;</span><span class="p">);</span>
+
+<span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">SC</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">SC</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">CID</span><span class="p">,</span><span class="n">Score</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span><span class="s1">&#39;78&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">SC</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">CID</span><span class="p">,</span><span class="n">Score</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="s1">&#39;C02&#39;</span><span class="p">,</span><span class="s1">&#39;60&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">SC</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">CID</span><span class="p">,</span><span class="n">Score</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S001&#39;</span><span class="p">,</span><span class="s1">&#39;C03&#39;</span><span class="p">,</span><span class="s1">&#39;97&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">SC</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">CID</span><span class="p">,</span><span class="n">Score</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S002&#39;</span><span class="p">,</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span><span class="s1">&#39;56&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">SC</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">CID</span><span class="p">,</span><span class="n">Score</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S003&#39;</span><span class="p">,</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span><span class="s1">&#39;55&#39;</span><span class="p">);</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nf">SC</span><span class="p">(</span><span class="n">SID</span><span class="p">,</span><span class="n">CID</span><span class="p">,</span><span class="n">Score</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;S004&#39;</span><span class="p">,</span><span class="s1">&#39;C01&#39;</span><span class="p">,</span><span class="s1">&#39;55&#39;</span><span class="p">);</span>
+</code></pre></div><h1 id="三实战问题">三、实战问题</h1>
+<h2 id="1查询c01课程比c02课程成绩高的所有学生的学号">1.查询“C01”课程比“C02”课程成绩高的所有学生的学号</h2>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1">-- 先分别查出学习&#34;C01&#34;、&#34;C02&#34;课程的学生ID和成绩
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">WHERE</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;C01&#39;</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">WHERE</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;C02&#39;</span><span class="p">;</span>
+<span class="c1">-- 再查询出&#34;C01&#34;大于&#34;C02&#34;课程的学生成绩
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">t1</span><span class="p">.</span><span class="n">sid</span> <span class="k">FROM</span> 
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">WHERE</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;C01&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">t1</span>
+<span class="k">INNER</span> <span class="k">JOIN</span>
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">WHERE</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;C02&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">t2</span>
+<span class="k">ON</span> <span class="n">t1</span><span class="p">.</span><span class="n">sid</span><span class="o">=</span><span class="n">t2</span><span class="p">.</span><span class="n">sid</span> <span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="n">score</span><span class="o">&gt;</span><span class="n">t2</span><span class="p">.</span><span class="n">score</span><span class="p">;</span>
+</code></pre></div></div>
+                    <div class="post_footer">
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="doc_comments"></div>
+                
+            </div>
+        </div>
+    </div>
+    <a id="back_to_top" href="#" class="back_to_top"><i class="ri-arrow-up-s-line"></i></a>
+    <footer class="footer">
+    <div class="powered_by">
+        <a href="https://varkai.com">Designed by VarKai,</a>
+        <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+    </div>
+
+    <div class="footer_slogan">
+        <span></span>
+    </div>
+</footer>
+    <script src="http://example.org/js/jquery-3.5.1.min.js"></script>
+<link href="http://example.org/css/fancybox.min.css" rel="stylesheet">
+<script src="http://example.org/js/fancybox.min.js"></script>
+<script src="http://example.org/js/zozo.js"></script>
+
+
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+
+
+</body>
+
+</html>
