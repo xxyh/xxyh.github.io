@@ -160,8 +160,41 @@
 <span class="k">INNER</span> <span class="k">JOIN</span>
 <span class="p">(</span><span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span><span class="n">score</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">WHERE</span> <span class="n">cid</span><span class="o">=</span><span class="s1">&#39;C02&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">t2</span>
 <span class="k">ON</span> <span class="n">t1</span><span class="p">.</span><span class="n">sid</span><span class="o">=</span><span class="n">t2</span><span class="p">.</span><span class="n">sid</span> <span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="n">score</span><span class="o">&gt;</span><span class="n">t2</span><span class="p">.</span><span class="n">score</span><span class="p">;</span>
+</code></pre></div><h2 id="2查询平均成绩大于60分的同学的学号和平均成绩">2.查询平均成绩大于60分的同学的学号和平均成绩</h2>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SELECT</span> <span class="n">sid</span><span class="p">,</span><span class="nf">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="k">AS</span> <span class="n">avgScore</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sid</span> <span class="k">HAVING</span> <span class="nf">AVG</span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">60</span><span class="p">;</span>
+</code></pre></div><h2 id="3查询所有同学的学号姓名选课数总成绩">3.查询所有同学的学号、姓名、选课数、总成绩</h2>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SELECT</span> <span class="n">student</span><span class="p">.</span><span class="n">sid</span><span class="p">,</span> <span class="n">sname</span><span class="p">,</span> <span class="nf">COUNT</span><span class="p">(</span><span class="n">cid</span><span class="p">),</span> <span class="nf">SUM</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> 
+<span class="k">FROM</span> <span class="n">sc</span><span class="p">,</span><span class="n">student</span> <span class="k">WHERE</span> <span class="n">sc</span><span class="p">.</span><span class="n">sid</span><span class="o">=</span><span class="n">student</span><span class="p">.</span><span class="n">sid</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sc</span><span class="p">.</span><span class="n">sid</span><span class="p">;</span>
+</code></pre></div><h2 id="4查询姓李的老师的个数不能重复">4.查询姓“李”的老师的个数，不能重复</h2>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">SELECT</span> <span class="nf">COUNT</span><span class="p">(</span><span class="n">tid</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">teacher</span> <span class="k">WHERE</span> <span class="n">tname</span> <span class="k">LIKE</span> <span class="s1">&#39;李%&#39;</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">tid</span><span class="p">;</span>
+</code></pre></div><h2 id="5查询没学过张三老师课的同学的学号姓名">5.查询没学过“张三”老师课的同学的学号、姓名</h2>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="c1">-- 查询&#34;张三&#34;老师教的课
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">cid</span> <span class="k">FROM</span> <span class="n">course</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">teacher</span> <span class="k">ON</span> <span class="n">course</span><span class="p">.</span><span class="o">`</span><span class="n">tid</span><span class="o">`=</span><span class="n">teacher</span><span class="p">.</span><span class="o">`</span><span class="n">tid</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">teacher</span><span class="p">.</span><span class="o">`</span><span class="n">tname</span><span class="o">`=</span><span class="s1">&#39;张三&#39;</span><span class="p">;</span>
+ 
+<span class="c1">-- 查询选择了张三老师课程的学生id
+</span><span class="c1"></span><span class="k">SELECT</span> <span class="n">sid</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">LEFT</span> <span class="k">JOIN</span> 
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">cid</span> <span class="k">FROM</span> <span class="n">course</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">teacher</span> <span class="k">ON</span> <span class="n">course</span><span class="p">.</span><span class="o">`</span><span class="n">tid</span><span class="o">`=</span><span class="n">teacher</span><span class="p">.</span><span class="o">`</span><span class="n">tid</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">teacher</span><span class="p">.</span><span class="o">`</span><span class="n">tname</span><span class="o">`=</span><span class="s1">&#39;张三&#39;</span><span class="p">)</span> <span class="n">tcid</span>
+<span class="k">ON</span> <span class="n">sc</span><span class="p">.</span><span class="o">`</span><span class="n">cid</span><span class="o">`=</span><span class="n">tcid</span><span class="p">.</span><span class="n">cid</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="n">sid</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">sid</span> <span class="k">NOT</span> <span class="k">IN</span>
+<span class="p">(</span>
+<span class="k">SELECT</span> <span class="n">sid</span> <span class="k">FROM</span> <span class="n">sc</span> <span class="k">LEFT</span> <span class="k">JOIN</span> 
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">cid</span> <span class="k">FROM</span> <span class="n">course</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">teacher</span> <span class="k">ON</span> <span class="n">course</span><span class="p">.</span><span class="o">`</span><span class="n">tid</span><span class="o">`=</span><span class="n">teacher</span><span class="p">.</span><span class="o">`</span><span class="n">tid</span><span class="o">`</span> <span class="k">WHERE</span> <span class="n">teacher</span><span class="p">.</span><span class="o">`</span><span class="n">tname</span><span class="o">`=</span><span class="s1">&#39;张三&#39;</span><span class="p">)</span> <span class="n">tcid</span>
+<span class="k">ON</span> <span class="n">sc</span><span class="p">.</span><span class="o">`</span><span class="n">cid</span><span class="o">`=</span><span class="n">tcid</span><span class="p">.</span><span class="n">cid</span>
+<span class="p">);</span>
 </code></pre></div></div>
                     <div class="post_footer">
+                        
+                        <div class="meta">
+                            <div class="info">
+                                <span class="field tags">
+                                    <i class="ri-stack-line"></i>
+                                    
+                                    <a href="https://xxyh.github.io/tags/sql/">SQL</a>
+                                    
+                                </span>
+                            </div>
+                        </div>
                         
                     </div>
                 </div>

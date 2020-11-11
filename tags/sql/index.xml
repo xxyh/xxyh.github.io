@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL on 萧萧弈寒</title>
+    <link>https://xxyh.github.io/tags/sql/</link>
+    <description>Recent content in SQL on 萧萧弈寒</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://xxyh.github.io/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL实战</title>
+      <link>https://xxyh.github.io/posts/sql%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://xxyh.github.io/posts/sql%E5%AE%9E%E6%88%98/</guid>
+      <description>本文基于停留的风-SQL实战中的建表脚本和问题，使用MySQL语法实现。 一、建表语句 DROP TABLE IF EXISTS student; CREATE TABLE student( sid VARCHAR(20) PRIMARY KEY COMMENT &amp;#39;学号&amp;#39;, sname VARCHAR(20)</description>
+    </item>
+    
+  </channel>
+</rss>
